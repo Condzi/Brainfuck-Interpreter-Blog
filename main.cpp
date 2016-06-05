@@ -4,14 +4,7 @@
 	condziblog.blogspot.com
 	http://forum.pasja-informatyki.pl/user/C%E2%98%BAndzi
 */
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <string>
-
-
-bool loadFromFile(std::vector<char> & instr);
-void jump(size_t & ip, char from, char to, bool dir, std::vector<char> & instructions);
+#include "Functions.h"
 
 
 int main()
@@ -39,34 +32,48 @@ int main()
 		switch (instructions[i])
 		{
 		case '>':
-			dataArrayPointer++; break;
+			dataArrayPointer++; 
+			break;
+
 		case '<':
-			dataArrayPointer--; break;
+			dataArrayPointer--; 
+			break;
+
 		case '+':
-			(*dataArrayPointer)++; break;
+			(*dataArrayPointer)++; 
+			break;
+
 		case '-':
-			(*dataArrayPointer)--; break;
+			(*dataArrayPointer)--; 
+			break;
+
 		case '.':
-			std::cout << *dataArrayPointer; break;
+			std::cout << *dataArrayPointer;
+			break;
+
 		case ',':
 			std::cout << "$ ";
-			std::cin.get(*dataArrayPointer); break;
+			std::cin.get(*dataArrayPointer); 
+			break;
+
 		case '[':
 			if (!*dataArrayPointer)
 			{
 				jump(i, '[', ']', true, instructions);
 			}
 			break;
+
 		case ']':
 			if (*dataArrayPointer)
 			{
 				jump(i, ']', '[', false, instructions);
 			}
 			break;
+
 		}
 	}
 
-	std::cout << "\n\t!Interpretation complete!\n";
+	std::cout << "\n\t@Interpretation complete!\n";
 	std::cin.get();
 	std::cin.get();
 	
@@ -74,54 +81,3 @@ int main()
 }
 
 
-bool loadFromFile(std::vector<char>& instr)
-{
-	std::ifstream file;
-	char temp;
-	std::string path;
-
-	std::cout << "$$ ";
-	std::cin >> path;
-	file.open(path);
-
-	if (!file.good())
-	{
-		return false;
-	}
-
-	while (file >> temp)
-	{
-		instr.push_back(temp);
-	}
-
-	file.close();
-	
-	return true;
-}
-
-void jump(size_t & instID, char from, char to, bool dir, std::vector<char>& instructions)
-{
-	short depth = 0;
-	short direction = -1;
-
-	if (dir)
-	{
-		direction = 1;
-	}
-
-	for (; ; instID += direction) 
-	{
-		if (instructions[instID] == from)
-		{
-			depth++;
-		}
-		else if (instructions[instID] == to)
-		{
-			depth--;
-		}
-		if (instructions[instID] == to && !depth)
-		{
-			return;
-		}
-	}
-}
