@@ -301,3 +301,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+Brainfuck Interpreter.sln
+Brainfuck Interpreter.vcxproj.filters
+Brainfuck Interpreter.vcxproj
