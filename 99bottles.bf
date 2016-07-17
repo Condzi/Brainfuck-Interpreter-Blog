@@ -12,6 +12,9 @@ http://www(dot)cats(dash)eye(dot)com/cet/soft/lang/bf/
 Believe it or not this language is indeed Turing complete!
 Combines the speed of BASIC with the ease of INTERCAL and
 the readability of an IOCCC entry!
+[
+ass
+]
 
 >+++++++++[<+++++++++++>-]<[>[-]>[-]<<[>+>+<<-]>>[<<+>>-]>>>
 [-]<<<+++++++++<[>>>+<<[>+>[-]<<-]>[<+>-]>[<<++++++++++>>>+<

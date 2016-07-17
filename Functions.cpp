@@ -8,6 +8,7 @@ bool loadFromFile(std::vector<char>& instr)
 
 	std::cout << "$$ ";
 	std::cin >> path;
+	
 	file.open(path);
 
 	if (!file.good())
@@ -27,8 +28,8 @@ bool loadFromFile(std::vector<char>& instr)
 
 void jump(size_t & instID, char from, char to, bool dir, std::vector<char>& instructions)
 {
-	short depth = 0;
-	short direction = -1;
+	uint8_t depth = 0;
+	int8_t direction = -1;
 
 	if (dir)
 	{

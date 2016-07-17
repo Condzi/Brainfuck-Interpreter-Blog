@@ -6,21 +6,22 @@
 */
 #include "Functions.h"
 
+	const uint16_t DATA_ARRAY_SIZE = 30000;
 
 int main()
 {
-	char dataArray[30000];
+	char dataArray[DATA_ARRAY_SIZE];
 	char * dataArrayPointer = dataArray;
 	std::vector<char> instructions;
 
-	for (size_t i = 0; i < 30000; ++i)
+	for (size_t i = 0; i < DATA_ARRAY_SIZE; ++i)
 	{
 		dataArray[i] = 0;
 	}
 
 	if (!loadFromFile(instructions))
 	{
-		std::cout << "\n\t@Cannot load file. Exiting.";
+		std::cout << "\n\t@Cannot load file. Exiting...";
 		std::cin.get();
 		std::cin.get();
 		return 1;
